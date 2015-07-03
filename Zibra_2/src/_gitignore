@@ -1,0 +1,7 @@
+*.o
+*.a
+main
+contacto_unittest
+agenda_unittest
+menu_unittest
+datos.json

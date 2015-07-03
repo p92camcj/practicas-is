@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agenda</title>
+    <script language="javascript" type="text/javascript" src="js/angular.js"></script>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/card.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-app="Agenda">
+    <div class="container" ng-controller="agendaController">
+      <div class="row">
+        <div ng-repeat="contacto in datos">
+          <div class="col-lg-6">
+          <div class="flip">
+            <div class="card">
+              <div class="face front">
+                <div class="details">
+                  <div>
+                    {{contacto.apellido1}} {{contacto.apellido2}}, {{contacto.nombre}}
+                  </div>
+                  <hr>
+
+                  <div class="idnumber">
+                    {{contacto.DNI}}
+                  </div>
+
+                  <div class="contact">
+                    {{contacto.mail}}
+                  </div>
+
+                  <div class="contact">
+                    {{contacto.telefono}}
+                  </div>
+
+                  <div class="contact">
+                    {{contacto.fechaNacimiento_dia}}/{{contacto.fechaNacimiento_mes}}/{{contacto.fechaNacimiento_anyo}}
+                  </div>
+                  
+                  
+                  
+                  
+                </div>
+                <img ng-hide="contacto.favorito" src="img/nofavorito.png" style="height:40px; width:40px; float:right; margin-top: 20px; margin-right: 20px;"><img ng-show="contacto.favorito" style="height:40px; width:40px; float:right; margin-top: 20px; margin-right: 20px;" src="img/estrella.png">
+                <div class="avatar">
+                  <img ng-src="{{contacto.foto}}"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="flip">
+            <div class="card">
+              <div class="face back">
+                <div class="social">
+                  <img class="socialico" src="img/twitter.png"/>
+                  <div class="sociallink">{{contacto.twitter}}</div>
+                  <div class="pull-right">
+                    <img class="socialico" src="img/facebook.png"/>
+                    <div class="sociallink">{{contacto.facebook}}</div>
+                  </div>
+                </div>
+                
+                <div style="margin-top:140px; padding-left:40px; padding-right:40px; text-align:justify;">
+                  <hr>
+                  {{contacto.anotaciones}}
+                  <p><p>
+                  {{contacto.direccion}} 
+                  <p>
+                  {{contacto.codigoPostal}} {{contacto.ciudad}} {{contacto.provincia}}
+                </div>
+                <div style= "text-align:right; padding-right:40px; margin-top:-80px;">
+                     {{contacto.tipoCita}}: {{contacto.fecha_dia}}/{{contacto.fecha_mes}}/{{contacto.fecha_anyo}}
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+    <script>
+      var app = angular.module("Agenda", []);
+
+      app.controller("agendaController", ["$scope", "$http", function($scope, $http){
+        $http.get('datos.json').success(function (data) {
+          $scope.datos = data;
+
+          var i, j, aux;
+          var campos = ["DNI", "nombre", "apellido1", "apellido2",
+			    "anotaciones", "mail", "telefono",
+			    "direccion", "codigoPostal", "ciudad", "provincia",
+			    "fechaNacimiento_dia", "fechaNacimiento_mes", "fechaNacimiento_anyo",
+			    "facebook", 
+			    "tipoCita", "fecha_dia", "fecha_mes", "fecha_anyo", 
+			    "foto"];
+
+
+
+
+
+          for(i=0; i<data.length; i++){
+            for(j=0; j<19; j++){
+              if(data[i][campos[j]] == 0){
+                data[i][campos[j]] = "VACÍO";
+              }
+            }
+            if(data[i].foto == -1){
+              data[i].foto = "img/silueta.jpg";
+            }
+            if(data[i].twitter == 0){
+              data[i].twitter = "VACÍO";
+            }
+            else{
+              aux = data[i].twitter;
+              data[i].twitter = '@' + aux;
+            }
+          }
+        });
+      }]);
+    </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
