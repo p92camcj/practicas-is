@@ -5,7 +5,10 @@ Alumnos que forman este grupo:
 
 Nombre completo | GitHub ![GitHub](http://i.vimeocdn.com/portrait/7059132_30x30.jpg "GitHub")
 --- | ---: |
-Camacho Cañamón, Julio | [p92camcj](https://github.com/p92camcj) ![Imagen](https://avatars0.githubusercontent.com/u/9354520?v=3&s=30 "Julio")  |
+Camacho Cañamón, Julio | 45886088 F | [Mandar un correo ](maitlo:p92camcj@uco.es) | [p92camcj](https://github.com/p92camcj) ![Imagen](https://avatars0.githubusercontent.com/u/9354520?v=3&s=30 "Julio")  |
+Monserrat Villatoro, Víctor | [victor1995mv](https://github.com/victor1995mv) ![Imagen](https://avatars3.githubusercontent.com/u/9074569?v=3&amp;s=30 "Víctor")  |
+Portillo Leal, Iván | [ivanportillo](https://github.com/ivanportillo) ![Imagen](https://avatars2.githubusercontent.com/u/6381225?v=3&s=30 "Iván")  |
+Rodríguez Ramírez, Francisco José | [Paco1994](https://github.com/Paco1994) ![Imagen](https://avatars3.githubusercontent.com/u/9074563?v=3&amp;s=30 "Francisco José")  |
 
 __Casos de uso:__  
 - [Previos a corrección](https://github.com/p92camcj/practicas-is/tree/master/Zibra_2/doc/CasosDeUso/PrevioACorreccion)
